@@ -1025,15 +1025,29 @@
   }, { threshold: 0.12 });
   reveals.forEach(el => obs.observe(el));
 
-  // Form submit
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Form submit — opens Google Form
   function handleSubmit() {
-    const inputs = document.querySelectorAll('.cta-form-card input, .cta-form-card select, .cta-form-card textarea');
-    let filled = true;
-    inputs.forEach(i => { if (!i.value) filled = false; });
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4500);
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSfV9jEcYDo0vhpuyH9oPEsMq2_MAYUf1RYn4PD085ftj16eyw/viewform?usp=header", "_blank");
   }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
 
   // Smooth scroll for nav links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
