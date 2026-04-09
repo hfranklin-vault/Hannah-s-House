@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannah's House — Supportive Shared Housing for Women</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #243156;
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --cream: #faf6f0;
+    --rose: #e8b4b8;
+    --rose-soft: #f5dfe1;
+    --warm-white: #fffdf9;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a4a4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(26, 39, 68, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,110,0.25);
+  }
+  .nav-logo {
+    font-family: 'Pinyon Script', cursive;
+    color: var(--gold);
+    font-size: 2rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80') center/cover no-repeat;
+    opacity: 0.18;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,39,68,0.97) 45%, rgba(26,39,68,0.70) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 5rem;
+    max-width: 780px;
+    animation: fadeUp 1s ease both;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-left: 2px solid var(--gold);
+    padding-left: 0.9rem;
+    margin-bottom: 1.8rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(4.5rem, 9vw, 8rem);
+    color: var(--warm-white);
+    line-height: 0.9;
+    margin-bottom: 0.3rem;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    color: var(--gold-light);
+    font-style: italic;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 1s 0.3s ease both;
+    letter-spacing: 0.03em;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 2.8rem;
+    animation: fadeUp 1s 0.45s ease both;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1rem 2.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,169,110,0.3); }
+  .btn-secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    padding: 1rem 2.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-badge {
+    position: absolute; right: 5rem; top: 50%;
+    transform: translateY(-50%);
+    width: 160px; height: 160px;
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    animation: spin 20s linear infinite;
+    opacity: 0.7;
+  }
+  .hero-badge-inner {
+    position: absolute; right: 5rem; top: 50%;
+    transform: translateY(-50%);
+    width: 160px; height: 160px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .hero-badge-inner .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-badge-inner .price-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.3rem;
+  }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+  /* ── MARQUEE ── */
+  .marquee-bar {
+    background: var(--gold);
+    padding: 0.85rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .marquee-track span { margin: 0 2.5rem; }
+  .marquee-track .dot { color: var(--navy-mid); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 5rem; }
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.15;
+    color: var(--navy);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 540px;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-image-stack { position: relative; height: 520px; }
+  .about-img-main {
+    position: absolute;
+    width: 78%; height: 88%;
+    object-fit: cover;
+    top: 0; left: 0;
+    box-shadow: 0 20px 60px rgba(26,39,68,0.15);
+  }
+  .about-img-accent {
+    position: absolute;
+    width: 50%; height: 55%;
+    object-fit: cover;
+    bottom: 0; right: 0;
+    border: 6px solid var(--cream);
+    box-shadow: 0 12px 40px rgba(26,39,68,0.12);
+  }
+  .about-gold-block {
+    position: absolute;
+    width: 80px; height: 80px;
+    background: var(--gold);
+    bottom: 30px; left: 10px;
+    z-index: -1;
+  }
+  .about-tagline {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3.2rem;
+    color: var(--gold);
+    margin-top: 1.8rem;
+    line-height: 1;
+  }
+
+  /* ── AMENITIES ── */
+  .amenities { background: var(--warm-white); }
+  .amenities-header { text-align: center; margin-bottom: 4rem; }
+  .amenities-header .section-body { margin: 0 auto; text-align: center; }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--gold-light);
+    border: 2px solid var(--gold-light);
+  }
+  .amenity-card {
+    background: var(--warm-white);
+    padding: 2.8rem 2.4rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .amenity-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .amenity-card:hover::before { transform: scaleX(1); }
+  .amenity-card:hover { background: #fdf9f4; }
+  .amenity-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .amenity-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .amenity-desc {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border: 1px solid rgba(201,169,110,0.12);
+    border-radius: 50%;
+  }
+  .pricing::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    border: 1px solid rgba(201,169,110,0.08);
+    border-radius: 50%;
+  }
+  .pricing .section-title { color: var(--warm-white); }
+  .pricing .section-body { color: rgba(255,255,255,0.65); margin: 0 auto 4rem; text-align: center; }
+  .pricing-card {
+    display: inline-block;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.3);
+    padding: 3.5rem 4rem;
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+    width: 100%;
+  }
+  .pricing-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .pricing-period {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+  }
+  .pricing-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+  .pricing-includes li {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.8);
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-weight: 300;
+  }
+  .pricing-includes li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; }
+  .pricing-note {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+    margin-top: 1.5rem;
+  }
+
+  /* ── TESTIMONIAL/PULL QUOTE ── */
+  .quote-section {
+    background: var(--rose-soft);
+    text-align: center;
+    padding: 6rem 5rem;
+    position: relative;
+  }
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    color: var(--rose);
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-style: italic;
+    color: var(--navy);
+    max-width: 700px;
+    margin: 0 auto 1.8rem;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+  .quote-attr {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+  .quote-attr::before { content: '— '; }
+
+  /* ── HOW IT WORKS ── */
+  .process { background: var(--cream); }
+  .process-header { margin-bottom: 4rem; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 12.5%;
+    width: 75%; height: 1px;
+    background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0.2), var(--gold));
+  }
+  .process-step { text-align: center; padding: 0 1.5rem; }
+  .step-num {
+    width: 56px; height: 56px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    background: var(--cream);
+    position: relative; z-index: 1;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+  .step-desc {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── GALLERY ── */
+  .gallery {
+    background: var(--warm-white);
+    padding: 5rem;
+  }
+  .gallery-header { margin-bottom: 3rem; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 8px;
+  }
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+  }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(0.92);
+  }
+  .gallery-item:hover img { transform: scale(1.04); filter: brightness(1); }
+  .gallery-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,39,68,0.25), transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 8rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: 'Mi casa,\A su casa.';
+    white-space: pre;
+    position: absolute;
+    right: -30px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Pinyon Script', cursive;
+    font-size: 11rem;
+    color: rgba(201,169,110,0.04);
+    line-height: 0.9;
+    pointer-events: none;
+  }
+  .cta-text .section-title { color: var(--warm-white); }
+  .cta-text .section-body { color: rgba(255,255,255,0.65); }
+  .cta-tagline {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-top: 1.5rem;
+    line-height: 1;
+  }
+  .cta-form-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.25);
+    padding: 3rem;
+    position: relative; z-index: 1;
+  }
+  .cta-form-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--warm-white);
+    margin-bottom: 0.4rem;
+    font-weight: 400;
+  }
+  .cta-form-card p {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-field {
+    display: flex; flex-direction: column; gap: 0.35rem;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 0.75rem 1rem;
+    color: rgba(255,255,255,0.85);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.25s;
+    width: 100%;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--gold); }
+  .form-field select option { background: var(--navy-mid); color: white; }
+  .form-field textarea { resize: vertical; min-height: 80px; }
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1.1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.2rem;
+    transition: all 0.3s;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .form-direct {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+  .form-direct a { color: var(--gold); text-decoration: none; font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111928;
+    padding: 3rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(201,169,110,0.12);
+  }
+  .footer-logo {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.8rem;
+    color: var(--gold);
+  }
+  .footer-info {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .footer-info strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .footer-contact { text-align: right; }
+  .footer-contact a {
+    display: block;
+    color: var(--gold);
+    font-size: 1.3rem;
+    font-family: 'Cormorant Garamond', serif;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .footer-contact span {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    font-weight: 500;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--navy);
+    border: 1px solid var(--gold);
+    color: white;
+    padding: 1.2rem 2rem;
+    font-size: 0.88rem;
+    display: none;
+    z-index: 999;
+    animation: fadeUp 0.4s ease;
+  }
+  .toast.show { display: block; }
+  .toast span { color: var(--gold); font-weight: 500; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    section { padding: 5rem 2rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 2rem; }
+    .hero-badge, .hero-badge-inner { display: none; }
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-stack { height: 340px; }
+    .amenities-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .process-steps::before { display: none; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; grid-column: 1 / -1; height: 240px; }
+    .cta-section { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-contact { text-align: center; }
+    .gallery { padding: 5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hannah's House</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#apply">Apply</a></li>
+    <li><a href="#apply" class="nav-cta">Apply Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Now Accepting Applications · Minneapolis, MN</div>
+    <h1>Hannah's <span>House</span></h1>
+    <div class="hero-sub">A sanctuary built for women in transition</div>
+    <p class="hero-desc">
+      Supportive shared housing in the heart of Minneapolis — designed for single women who are working, studying, or rebuilding. Private bedrooms, shared community, and a safe home to grow.
+    </p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">Apply for a Room</a>
+      <a href="#amenities" class="btn-secondary">Explore the Home</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <svg viewBox="0 0 160 160" width="160" height="160" style="position:absolute;inset:0;">
+      <path id="circle" d="M80,80 m-65,0 a65,65 0 1,1 130,0 a65,65 0 1,1 -130,0" fill="none"/>
+      <text font-family="DM Sans" font-size="10.5" fill="rgba(201,169,110,0.7)" letter-spacing="3.5" font-weight="500">
+        <textPath href="#circle">MINNEAPOLIS · MN 55411 · PRIVATE ROOMS · </textPath>
+      </text>
+    </svg>
+  </div>
+  <div class="hero-badge-inner">
+    <div class="price">$950<span style="font-size:1.5rem">/mo</span></div>
+    <div class="price-label">Starting From</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>5 Private Bedrooms</span><span class="dot">✦</span>
+    <span>Utilities Included</span><span class="dot">✦</span>
+    <span>4 Bathrooms</span><span class="dot">✦</span>
+    <span>On-site Laundry</span><span class="dot">✦</span>
+    <span>Security Cameras</span><span class="dot">✦</span>
+    <span>Central Air</span><span class="dot">✦</span>
+    <span>Quiet Hours Enforced</span><span class="dot">✦</span>
+    <span>Fireplace</span><span class="dot">✦</span>
+    <span>Shared Kitchen</span><span class="dot">✦</span>
+    <span>Women-Only Community</span><span class="dot">✦</span>
+    <!-- duplicate for infinite loop -->
+    <span>5 Private Bedrooms</span><span class="dot">✦</span>
+    <span>Utilities Included</span><span class="dot">✦</span>
+    <span>4 Bathrooms</span><span class="dot">✦</span>
+    <span>On-site Laundry</span><span class="dot">✦</span>
+    <span>Security Cameras</span><span class="dot">✦</span>
+    <span>Central Air</span><span class="dot">✦</span>
+    <span>Quiet Hours Enforced</span><span class="dot">✦</span>
+    <span>Fireplace</span><span class="dot">✦</span>
+    <span>Shared Kitchen</span><span class="dot">✦</span>
+    <span>Women-Only Community</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-stack reveal">
+    <img class="about-img-main" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Front of Hannah's House, blue exterior with porch">
+    <img class="about-img-accent" src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=80" alt="Warm living room interior">
+    <div class="about-gold-block"></div>
+  </div>
+  <div class="about-text reveal">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">A home where you can <em>exhale</em></h2>
+    <p class="section-body">
+      Hannah's House was created for women who deserve more than four walls — they deserve a foundation. Whether you're working, going to school, in recovery, or simply starting fresh, this is a space built with warmth, structure, and dignity.
+    </p>
+    <p class="section-body" style="margin-top:1.2rem;">
+      Located in Minneapolis's Hawthorne neighborhood, every resident is screened and welcomed into an accountable, peaceful community. You bring your story. We provide the home.
+    </p>
+    <div class="about-tagline">Mi casa, su casa.</div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div class="amenities-header reveal">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Everything a home <em>should be</em></h2>
+    <p class="section-body">All utilities included. No hidden fees. Just move in and begin.</p>
+  </div>
+  <div class="amenities-grid reveal">
+    <div class="amenity-card">
+      <span class="amenity-icon">🛏</span>
+      <div class="amenity-title">5 Private Bedrooms</div>
+      <p class="amenity-desc">Your own private suite in a fully screened, women-only household. Your space is yours.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🍽</span>
+      <div class="amenity-title">Fully Equipped Kitchen</div>
+      <p class="amenity-desc">Shared, fully stocked kitchen for cooking, meal prep, and community evenings.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🛁</span>
+      <div class="amenity-title">4 Bathrooms</div>
+      <p class="amenity-desc">Four bathrooms shared thoughtfully across five residents — never a long wait.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🔒</span>
+      <div class="amenity-title">Security Cameras</div>
+      <p class="amenity-desc">On-site security cameras throughout common areas so you always feel safe.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🔥</span>
+      <div class="amenity-title">Fireplace & Living Room</div>
+      <p class="amenity-desc">Gather in the cozy living room by the fireplace — your shared space to unwind.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">❄️</span>
+      <div class="amenity-title">Central Air & Heat</div>
+      <p class="amenity-desc">Comfortable year-round with central air conditioning and heating included in rent.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">👗</span>
+      <div class="amenity-title">On-site Laundry</div>
+      <p class="amenity-desc">In-home washer and dryer access — no trips to the laundromat.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🌙</span>
+      <div class="amenity-title">Quiet Hours</div>
+      <p class="amenity-desc">Structured quiet hours so everyone can rest, study, and recharge without disruption.</p>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">⚡</span>
+      <div class="amenity-title">All Utilities Included</div>
+      <p class="amenity-desc">Water, electricity, gas, and Wi-Fi all included in your monthly rent. Simple.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="amenities-header reveal" style="margin-bottom:3rem;">
+    <div class="section-label" style="color:var(--gold);">Pricing</div>
+    <h2 class="section-title" style="color:var(--warm-white);">Transparent, <em>all-inclusive</em> rent</h2>
+    <p class="section-body" style="color:rgba(255,255,255,0.6);margin:0 auto;text-align:center;">No surprise fees. No utility bills. Just one monthly payment and a place to call home.</p>
+  </div>
+  <div class="pricing-card reveal">
+    <div class="pricing-amount">$950</div>
+    <div class="pricing-period">per month · per private bedroom</div>
+    <ul class="pricing-includes">
+      <li>Private furnished bedroom</li>
+      <li>All utilities — water, electric, gas, Wi-Fi</li>
+      <li>Access to shared kitchen, living room & bathrooms</li>
+      <li>On-site laundry access</li>
+      <li>24/7 security camera coverage</li>
+      <li>Screened, women-only community</li>
+      <li>Structured house rules & quiet hours</li>
+    </ul>
+    <a href="#apply" class="btn-primary" style="display:block;text-align:center;">Apply for a Room Today</a>
+    <p class="pricing-note">Application required · Subject to availability · Security deposit may apply</p>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section reveal">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">
+    A home is not just shelter — it's the foundation everything else is built on. Hannah's House gives women the space to breathe, grow, and become.
+  </p>
+  <div class="quote-attr">Hannah Franklin, Founder</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="process" id="process">
+  <div class="process-header reveal">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">Your path to <em>moving in</em></h2>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Submit Application</div>
+      <p class="step-desc">Fill out our simple application form below or call us directly to get started.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Screening Call</div>
+      <p class="step-desc">We schedule a short call to learn about you, your goals, and your situation.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Home Tour</div>
+      <p class="step-desc">Come see the space, meet the community, and feel if Hannah's House is your fit.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Move In</div>
+      <p class="step-desc">Sign your agreement, pay your first month, and welcome home.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-header reveal">
+    <div class="section-label">Inside the Home</div>
+    <h2 class="section-title">Spaces that feel like <em>yours</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="House exterior">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=80" alt="Living room">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Bathroom">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Kitchen">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Bedroom">
+    </div>
+  </div>
+</section>
+
+<!-- CTA / APPLICATION -->
+<section class="cta-section" id="apply">
+  <div class="cta-text reveal">
+    <div class="section-label" style="color:var(--gold);">Apply Today</div>
+    <h2 class="section-title">Ready for a place to <em>call home?</em></h2>
+    <p class="section-body">Rooms are limited. If Hannah's House sounds like the right fit, don't wait — submit your application and we'll be in touch within 48 hours.</p>
+    <div class="cta-tagline">Mi casa, su casa.</div>
+  </div>
+  <div class="cta-form-card reveal">
+    <h3>Room Application</h3>
+    <p>Tell us a little about yourself. We review every application personally.</p>
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input type="text" placeholder="Your first name">
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Your last name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="612-555-0000">
+      </div>
+      <div class="form-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full">
+        <label>Current Situation</label>
+        <select>
+          <option value="" disabled selected>Select one...</option>
+          <option>Working / Employed</option>
+          <option>Student</option>
+          <option>In Recovery / Post-Treatment</option>
+          <option>Transitional Housing Needed</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full">
+        <label>Tell Us About Yourself</label>
+        <textarea placeholder="Briefly share your situation and why Hannah's House would be a good fit for you..."></textarea>
+      </div>
+    </div>
+    <button class="form-submit" onclick="handleSubmit()">Submit My Application →</button>
+    <p class="form-direct">Prefer to call? <a href="tel:6126167248">612-616-7248</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hannah's House</div>
+  <div class="footer-info">
+    <strong>Supportive Shared Housing for Women</strong><br>
+    Minneapolis, MN 55411 · Hawthorne Neighborhood<br>
+    © 2026 Hannah Franklin LLC · All Rights Reserved
+  </div>
+  <div class="footer-contact">
+    <span>Call or Text</span>
+    <a href="tel:6126167248">612-616-7248</a>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span>✦ Application Received!</span> We'll be in touch within 48 hours.
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Form submit
+  function handleSubmit() {
+    const inputs = document.querySelectorAll('.cta-form-card input, .cta-form-card select, .cta-form-card textarea');
+    let filled = true;
+    inputs.forEach(i => { if (!i.value) filled = false; });
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4500);
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
